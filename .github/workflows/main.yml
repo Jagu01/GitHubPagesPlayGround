@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4.1.7
+    
     - name: Publish .NET Project
       run: dotnet publish -c Release -o release
     - name: Change base-tag in index.html from / to /GitHubPagesPlayGround/
-    - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
       run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHubPagesDemo\/" \/>/g' release/wwwroot/index.html        
     - name: copy index.html to 404.html
       run: cp release/wwwroot/index.html release/wwwroot/404.html
